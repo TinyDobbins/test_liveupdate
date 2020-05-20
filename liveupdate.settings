@@ -1,0 +1,6 @@
+[liveupdate]
+mode = Zip
+zip-filepath = C:\Users\bunbunbun\Desktop\test_live_update
+publickey = C:\Users\bunbunbun\Desktop\test_live_update\key\public.der
+privatekey = C:\Users\bunbunbun\Desktop\test_live_update\key\private.der
+

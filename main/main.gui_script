@@ -1,0 +1,30 @@
+local dirtylarry = require "dirtylarry/dirtylarry"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+
+end
+
+function update(self, dt)
+
+end
+
+function on_message(self, message_id, message, sender)
+
+end
+
+function on_input(self, action_id, action)
+	dirtylarry:button("btn_load1", action_id, action, function ()
+		msg.post("main:/main#loader", "attempt_load_resources")
+	end)
+
+	dirtylarry:button("btn_load2", action_id, action, function ()
+		msg.post("main:/main#loader", "attempt_download_manifest")
+	end)
+
+end
