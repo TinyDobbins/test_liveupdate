@@ -1,4 +1,5 @@
 local MANIFEST_FILENAME = 'liveupdate.game.dmanifest'
+local URL_RESOURCES = 'https://github.com/TinyDobbins/test_liveupdate/tree/master/resources/'
 
 function init(self)
 	self.resources_pending = 0
@@ -64,9 +65,8 @@ function on_message(self, message_id, message, sender)
 		
 	elseif message_id == hash("attempt_download") then
 		local manifest = resource.get_current_manifest() -- <4>
-		local base_url = "https://tinydobbins.com/test/defold/test_live_update/resources/" -- <5>
-		
-		http.request(base_url .. message.resource_hash, "GET", function(self, id, response)
+
+		http.request(URL_RESOURCES .. message.resource_hash, "GET", function(self, id, response)
 			if response.status == 200 or response.status == 304 then -- <6>
 				-- We got the response ok.
 				print("storing " .. message.resource_hash)
@@ -84,8 +84,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("attempt_download_manifest") then
 		print("attempt_download_manifest")
 		
-		local base_url = "https://tinydobbins.com/test/defold/test_live_update/resources/" -- <1>
-		http.request(base_url .. MANIFEST_FILENAME, "GET", function(self, id, response)
+		http.request(URL_RESOURCES .. MANIFEST_FILENAME, "GET", function(self, id, response)
 			if response.status == 200 or response.status == 304 then
 				-- We got the response ok.
 				print("verifying and storing manifest " .. MANIFEST_FILENAME)
