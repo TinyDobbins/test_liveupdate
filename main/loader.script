@@ -1,5 +1,5 @@
 local MANIFEST_FILENAME = 'liveupdate.game.dmanifest'
-local URL_RESOURCES = 'https://github.com/TinyDobbins/test_liveupdate/tree/master/resources/'
+local URL_RESOURCES = 'https://tinydobbins.github.io/test_liveupdate/resources/'
 
 function init(self)
 	self.resources_pending = 0
